@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Module Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+	
+</head>
+<body>
+    <div class="documentation-container">
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay"></div>
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>
+                    <i class="fas fa-book-open"></i>
+                    TechDocs
+                </h2>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search documentation...">
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Getting Started</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Documentation Home</a></li>
+                        <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+                        <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>User Modules</h3>
+                    <ul class="nav-links">
+                        <li class="has-submenu active">
+                            <a href="#" class="active" id="user-module-toggle">
+                                <i class="fas fa-users"></i> User Module
+                            </a>
+                            <ul class="submenu active">
+                                <li><a href="#overview" class="active">Overview</a></li>
+                                <li><a href="#view-users">View Users</a></li>
+                                <li><a href="#create-users">Create Users</a></li>
+                                <li><a href="#edit-users">Edit Users</a></li>
+                                <li><a href="#delete-users">Delete Users</a></li>
+                                <li><a href="#export-users">Export Users</a></li>
+                                <li><a href="#import-users">Import Users</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+                        <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Inventory Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+                        <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+                        <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+                        <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Order Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+                        <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+                        <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Advanced Features</h3>
+                    <ul class="nav-links">
+                        <li><a href="#"><i class="fas fa-plug"></i> API Integration</a></li>
+                        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Additional Resources</h3>
+                    <ul class="nav-links">
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-exclamation-triangle"></i> Troubleshooting</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Release Notes</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>User Module Documentation</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="#">Core Modules</a>
+                    <span class="separator">/</span>
+                    <span>User Module</span>
+                </div>
+            </div>
+            
+            <div class="documentation-card" data-animate>
+                <span id="overview" class="section-anchor"></span>
+                <h2>User Management Overview</h2>
+                <p>The User Module provides comprehensive functionality for managing users in the system, including creation, authentication, permissions, and profile management.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Create, view, edit, and delete user accounts</li>
+                    <li>Role-based access control with granular permissions</li>
+                    <li>Bulk operations (import/export users)</li>
+                    <li>User activity tracking</li>
+                </ul>
+                
+                <span id="view-users" class="section-anchor"></span>
+                <h2>Viewing Users</h2>
+                <p>To view the list of users in the system:</p>
+                <ol>
+                    <li>Navigate to <strong>Users</strong> in the admin panel</li>
+                    <li>The system will display a paginated list of all users</li>
+                    <li>Use the search box to filter users by name, email, or other attributes</li>
+                </ol>
+
+                <img src="screenshots/user/1.png" alt="Description of image" width="800">
+                <br>
+                <br>
+                
+                <span id="create-users" class="section-anchor"></span>
+                <h2>Creating Users</h2>
+                <p>To create a new user:</p>
+                <ol>
+                    <li>Click the <strong>Create User</strong> button</li>
+                    <li>Fill in the required fields:
+                        <ul>
+                            <li>Name of the user</li>
+                            <li>NIC Number (must be valid and unique/ <strong>Enter without 'V' or 'X'</strong>)</li>
+                            <li>Email address (must be valid and unique)</li>
+                            <li>Address & City</li>
+                        </ul>
+                    </li>
+                    <li>Assign roles and permissions</li>
+                    <li>Click <strong>Save</strong> to create the user</li>
+                </ol>
+                
+                <div class="note">
+                    <strong>Note:</strong> When sending an invitation email, the user will receive a link to set their own password. The password field can be left blank in this case.
+                </div>
+                
+                <img src="screenshots/user/2.png" alt="Description of image" width="800">
+                <br>
+                <br>
+
+                <h4>Select User Roles</h4>
+                <img src="screenshots/user/3.png" alt="Description of image" width="800">
+                <br>
+                <br>
+                
+                <span id="edit-users" class="section-anchor"></span>
+                <h2>Editing Users</h2>
+                <p>To modify an existing user account:</p>
+                <ol>
+                    <li>Navigate to the user's profile</li>
+                    <li>Click the <strong>Edit</strong> button</li>
+                    <li>Make the necessary changes to the user's information</li>
+                    <li>Click <strong>Save</strong> to update the user</li>
+                </ol>
+
+                <div class="note">
+                    <strong>Note:</strong> When Editing a user profile, the password will be changed to default system password
+                </div>
+                
+                <img src="screenshots/user/4.png" alt="Description of image" width="800">
+                <br>
+                <br>
+                
+                <span id="delete-users" class="section-anchor"></span>
+                <h2>Deleting Users</h2>
+                <p>To remove a user from the system:</p>
+                <ol>
+                    <li>Navigate to the user's profile</li>
+                    <li>Click the <strong>Delete</strong> button</li>
+                    <li>Confirm the deletion in the dialog box</li>
+                </ol>
+                
+                <div class="warning">
+                    <strong>Warning:</strong> Deleted users cannot be recovered. Consider deactivating instead of deleting if you might need the account later.
+                </div>
+                
+                <img src="screenshots/user/5.png" alt="Description of image" width="800">
+                <br>
+                <br>
+                
+                <span id="export-users" class="section-anchor"></span>
+                <h2>Exporting Users</h2>
+                <p>To export user data:</p>
+                <ol>
+                    <li>Navigate to the Users list</li>
+                    <li>Click the <strong>Export</strong> button</li>
+                    <li>Click <strong>Export</strong> to download the file</li>
+                </ol>
+                
+                <div class="note">
+                    <strong>Note:</strong> You can Export users list as a <strong>Excel</strong> document.
+                </div>
+
+                <img src="screenshots/user/6.png" alt="Description of image" width="800">
+                <br>
+                <br>
+                
+                <span id="import-users" class="section-anchor"></span>
+                <h2>Importing Users</h2>
+                <p>To import users in bulk:</p>
+                <ol>
+                    <li>Navigate to the Users list</li>
+                    <li>Click the <strong>Import</strong> button</li>
+                    <li>Upload your <strong>Excel</strong> file to the model</li>
+                    <li>Click <strong>Import</strong> to process the file</li>
+                </ol>
+                
+                <img src="screenshots/user/7.png" alt="Description of image" width="800">
+                <br>
+                <br>
+            </div>
+            
+            <div class="feedback-section" data-animate>
+                <p>Was this documentation helpful?</p>
+                <div class="feedback-buttons">
+                    <button class="feedback-btn helpful">
+                        <i class="fas fa-thumbs-up"></i> Yes
+                    </button>
+                    <button class="feedback-btn not-helpful">
+                        <i class="fas fa-thumbs-down"></i> No
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Resources | Tailor Trail ERP Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== CSS Variables ========== */
+        :root {
+            /* Colors - Tailor Trail ERP Color Scheme */
+            --primary: #5d4bff;  /* Vibrant purple-blue */
+            --primary-light: #7a6bff;
+            --primary-dark: #4a3ac7;
+            --secondary: #00c9a7;  /* Teal accent */
+            --accent: #ff6b6b;     /* Coral accent */
+            --dark: #1a1a2e;       /* Deep navy */
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            
+            /* Shadows */
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            
+            /* Transitions */
+            --transition-fast: 0.2s;
+            --transition-normal: 0.3s;
+        }
+        
+        /* ========== Base Styles ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        
+        /* ========== Layout Styles ========== */
+        .documentation-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* ========== Sidebar Styles ========== */
+        .sidebar {
+            width: 280px;
+            background-color: white;
+            border-right: 1px solid var(--gray-light);
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            padding: var(--space-md) 0;
+        }
+        
+        .sidebar-header {
+            padding: 0 var(--space-md) var(--space-md);
+            border-bottom: 1px solid var(--gray-light);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .sidebar-header h2 i {
+            font-size: 1.5rem;
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .sidebar-logo img {
+            height: 32px;
+            width: auto;
+        }
+        
+        .search-box {
+            margin-top: var(--space-sm);
+            position: relative;
+            width: 100%;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: var(--space-xs) var(--space-sm) var(--space-xs) 2.5rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(93, 75, 255, 0.2);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: var(--space-sm);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .sidebar-nav {
+            padding: 0 var(--space-sm);
+        }
+        
+        .nav-section {
+            margin-bottom: var(--space-md);
+        }
+        
+        .nav-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray);
+            margin-bottom: var(--space-sm);
+            padding: 0 var(--space-xs);
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
+            color: var(--dark);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(93, 75, 255, 0.1);
+            color: var(--primary-dark);
+        }
+        
+        .nav-links a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .nav-links a i {
+            margin-right: var(--space-xs);
+            width: 1.25rem;
+            text-align: center;
+        }
+        
+        /* ========== Main Content Styles ========== */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: var(--space-lg) var(--space-xl);
+            background-color: var(--light);
+        }
+        
+        /* Header */
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .content-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .action-btn {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-light);
+            background: white;
+            color: var(--dark);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: all var(--transition-normal);
+        }
+        
+        .action-btn:hover {
+            background: rgba(93, 75, 255, 0.05);
+            border-color: var(--primary-light);
+        }
+        
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .action-btn.primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Resources Section */
+        .resources-section {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .resource-category {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            border: 1px solid var(--gray-light);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .resource-category h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .resource-category h3 i {
+            color: var(--primary);
+        }
+        
+        .resource-links {
+            list-style: none;
+        }
+        
+        .resource-links li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .resource-links a {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
+            color: var(--dark);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+        
+        .resource-links a:hover {
+            background-color: rgba(93, 75, 255, 0.05);
+            color: var(--primary-dark);
+        }
+        
+        .resource-links a i {
+            width: 1.5rem;
+            text-align: center;
+            color: var(--gray);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            color: white;
+            margin-top: var(--space-xl);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .cta-section p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: var(--space-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+        }
+        
+        .cta-btn {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: all var(--transition-normal);
+        }
+        
+        .cta-btn.primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .cta-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ========== Responsive Styles ========== */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+                padding: var(--space-md) var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .documentation-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                border-right: none;
+                border-bottom: 1px solid var(--gray-light);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: var(--space-md);
+            }
+            
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-sm);
+            }
+            
+            .header-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .cta-section {
+                padding: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="documentation-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="https://via.placeholder.com/150x50?text=Tailor+Trail+ERP" alt="Tailor Trail ERP Logo">
+                </div>
+                <h2>
+                    <i class="fas fa-book-open"></i>
+                    ERP Guide
+                </h2>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search documentation...">
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Getting Started</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="all-resources.html" class="active"><i class="fas fa-book"></i> All Resources</a></li>
+                        <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+                        <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>User Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+                        <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+                        <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Inventory Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+                        <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+                        <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+                        <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Order Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+                        <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+                        <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Advanced Features</h3>
+                    <ul class="nav-links">
+                        <li><a href="#"><i class="fas fa-plug"></i> API Integration</a></li>
+                        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>All Resources</h1>
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <button class="action-btn primary">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+            
+            <div class="resources-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-th-large"></i> Complete Documentation Catalog</h2>
+                </div>
+                
+                <div class="resources-grid">
+                    <!-- Getting Started Section -->
+                    <div class="resource-category">
+                        <h3><i class="fas fa-rocket"></i> Getting Started</h3>
+                        <ul class="resource-links">
+                            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Installation Guide</a></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+                            <li><a href="#"><i class="fas fa-user-plus"></i> First-Time Setup</a></li>
+                            <li><a href="#"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Modules Section -->
+                    <div class="resource-category">
+                        <h3><i class="fas fa-users"></i> User Modules</h3>
+                        <ul class="resource-links">
+                            <li><a href="user-module.html"><i class="fas fa-user-cog"></i> User Management</a></li>
+                            <li><a href="#"><i class="fas fa-user-shield"></i> Roles & Permissions</a></li>
+                            <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Management</a></li>
+                            <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Management</a></li>
+                            <li><a href="#"><i class="fas fa-id-card"></i> Employee Profiles</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Inventory Modules Section -->
+                    <div class="resource-category">
+                        <h3><i class="fas fa-warehouse"></i> Inventory Modules</h3>
+                        <ul class="resource-links">
+                            <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Management</a></li>
+                            <li><a href="inventory-location.html"><i class="fas fa-map-marked-alt"></i> Location Tracking</a></li>
+                            <li><a href="inventory-item.html"><i class="fas fa-tshirt"></i> Product Management</a></li>
+                            <li><a href="stock-overview.html"><i class="fas fa-boxes"></i> Stock Overview</a></li>
+                            <li><a href="#"><i class="fas fa-exchange-alt"></i> Inventory Transfers</a></li>
+                            <li><a href="#"><i class="fas fa-clipboard-check"></i> Inventory Audits</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Order Modules Section -->
+                    <div class="resource-category">
+                        <h3><i class="fas fa-shopping-cart"></i> Order Modules</h3>
+                        <ul class="resource-links">
+                            <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+                            <li><a href="customer-order.html"><i class="fas fa-shopping-bag"></i> Customer Orders</a></li>
+                            <li><a href="sample-order.html"><i class="fas fa-clipboard-list"></i> Sample Orders</a></li>
+                            <li><a href="#"><i class="fas fa-undo-alt"></i> Returns & Exchanges</a></li>
+                            <li><a href="#"><i class="fas fa-truck-loading"></i> Order Fulfillment</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Advanced Features Section -->
+                    <div class="resource-category">
+                        <h3><i class="fas fa-magic"></i> Advanced Features</h3>
+                        <ul class="resource-links">
+                            <li><a href="#"><i class="fas fa-plug"></i> API Integration</a></li>
+                            <li><a href="#"><i class="fas fa-chart-line"></i> Analytics Dashboard</a></li>
+                            <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                            <li><a href="#"><i class="fas fa-robot"></i> Automation Rules</a></li>
+                            <li><a href="#"><i class="fas fa-file-export"></i> Data Import/Export</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Reports Section -->
+                    <div class="resource-category">
+                        <h3><i class="fas fa-chart-pie"></i> Reports</h3>
+                        <ul class="resource-links">
+                            <li><a href="#"><i class="fas fa-chart-bar"></i> Sales Reports</a></li>
+                            <li><a href="#"><i class="fas fa-chart-line"></i> Inventory Reports</a></li>
+                            <li><a href="#"><i class="fas fa-money-bill-wave"></i> Financial Reports</a></li>
+                            <li><a href="#"><i class="fas fa-user-clock"></i> Employee Performance</a></li>
+                            <li><a href="#"><i class="fas fa-file-csv"></i> Custom Report Builder</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h2>Can't find what you're looking for?</h2>
+                <p>Our documentation team is constantly updating resources. If you can't find what you need, reach out to our support team.</p>
+                <div class="cta-buttons">
+                    <button class="cta-btn primary">
+                        <i class="fas fa-headset"></i> Contact Support
+                    </button>
+                    <button class="cta-btn secondary">
+                        <i class="fas fa-comments"></i> Community Forum
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

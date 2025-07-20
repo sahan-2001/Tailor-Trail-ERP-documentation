@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Warehouse Module Documentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<div class="documentation-container">
+
+  <!-- Mobile Menu Toggle -->
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-book-open"></i> TechDocs</h2>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search documentation..."/>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <h3>Getting Started</h3>
+        <ul class="nav-links">
+          <li><a href="index.html"><i class="fas fa-home"></i> Documentation Home</a></li>
+          <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+          <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>User Modules</h3>
+        <ul class="nav-links">
+          <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+          <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+          <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>Inventory Modules</h3>
+        <ul class="nav-links">
+          <li class="has-submenu active">
+            <a href="#" class="active" id="warehouse-module-toggle">
+              <i class="fas fa-warehouse"></i> Warehouse Module
+            </a>
+            <ul class="submenu active">
+              <li><a href="#overview" class="active">Overview</a></li>
+              <li><a href="#view-warehouses">View Warehouses</a></li>
+              <li><a href="#create-warehouses">Create Warehouses</a></li>
+              <li><a href="#edit-warehouses">Edit Warehouses</a></li>
+              <li><a href="#delete-warehouses">Delete Warehouses</a></li>
+              <li><a href="#export-warehouses">Export Warehouses</a></li>
+            </ul>
+          </li>
+          <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+          <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+          <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>Order Modules</h3>
+        <ul class="nav-links">
+          <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+          <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+          <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Warehouse Module Documentation</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <a href="#">Core Modules</a>
+        <span class="separator">/</span>
+        <span>Warehouse Module</span>
+      </div>
+    </div>
+
+    <div class="documentation-card" data-animate>
+      <span id="overview" class="section-anchor"></span>
+      <h2>Warehouse Overview</h2>
+      <p>The Warehouse Module allows creating and managing warehouse facilities with capacity, location, and notes.</p>
+
+      <h3>Key Features</h3>
+      <ul>
+        <li>Create, view, edit, and delete warehouse records</li>
+        <li>Capture location and dimension data</li>
+        <li>Apply filters based on ID, name, or measurement unit</li>
+        <li>Role-based permission for actions</li>
+      </ul>
+
+      <span id="view-warehouses" class="section-anchor"></span>
+      <h2>Viewing Warehouses</h2>
+      <ol>
+        <li>Navigate to <strong>Inventory Management > Warehouses</strong></li>
+        <li>The warehouse list will be displayed with ID, name, capacity, and unit</li>
+        <li>Use filters to narrow down results</li>
+      </ol>
+      <img src="screenshots/warehouse/1.png" alt="View Warehouses" width="800"><br><br>
+
+      <span id="create-warehouses" class="section-anchor"></span>
+      <h2>Creating Warehouses</h2>
+      <ol>
+        <li>Click <strong>Create Warehouse</strong></li>
+        <li>Fill in required details:
+          <ul>
+            <li>Warehouse Name</li>
+            <li>Address (3 lines) and City</li>
+            <li>Length, Width, Height, and Unit of measurement</li>
+            <li>Optional Notes</li>
+          </ul>
+        </li>
+        <li>Click <strong>Save</strong></li>
+      </ol>
+      <img src="screenshots/warehouse/2.png" alt="Create Warehouse" width="800"><br><br>
+
+      <span id="edit-warehouses" class="section-anchor"></span>
+      <h2>Editing Warehouses</h2>
+      <ol>
+        <li>Select a warehouse from the list</li>
+        <li>Click the <strong>Edit</strong> icon</li>
+        <li>Update the relevant fields</li>
+        <li>Click <strong>Save</strong> to apply changes</li>
+      </ol>
+      <div class="note">
+        <strong>Note:</strong> Name must remain unique after editing.
+      </div>
+      <img src="screenshots/warehouse/3.png" alt="Edit Warehouse" width="800"><br><br>
+
+      <span id="delete-warehouses" class="section-anchor"></span>
+      <h2>Deleting Warehouses</h2>
+      <ol>
+        <li>Click the <strong>Delete</strong> icon for the selected warehouse</li>
+        <li>Confirm deletion in the dialog popup</li>
+      </ol>
+      <div class="warning">
+        <strong>Warning:</strong> This action is permanent. Deleted records cannot be restored.
+      </div>
+      <img src="screenshots/warehouse/4.png" alt="Delete Warehouse" width="800"><br><br>
+
+      <span id="export-warehouses" class="section-anchor"></span>
+      <h2>Exporting Warehouses</h2>
+      <p>To export warehouse data:</p>
+      <ol>
+        <li>Navigate to the <strong>Warehouses</strong> page</li>
+        <li>Click the <strong>Export</strong> button in the top-right or toolbar</li>
+        <li>Select your preferred file format (e.g., Excel, CSV)</li>
+        <li>Click <strong>Export</strong> to download the data</li>
+      </ol>
+
+      <div class="note">
+        <strong>Note:</strong> Only visible columns and filters will be included in the export file.
+      </div>
+      <img src="screenshots/warehouse/5.png" alt="Export Warehouses" width="800">
+      <br><br>
+
+      <div class="feedback-section" data-animate>
+        <p>Was this documentation helpful?</p>
+        <div class="feedback-buttons">
+          <button class="feedback-btn helpful"><i class="fas fa-thumbs-up"></i> Yes</button>
+          <button class="feedback-btn not-helpful"><i class="fas fa-thumbs-down"></i> No</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
