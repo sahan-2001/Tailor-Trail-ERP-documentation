@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Supplier Module Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+    <div class="documentation-container">
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay"></div>
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>
+                    <i class="fas fa-book-open"></i>
+                    TechDocs
+                </h2>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search documentation...">
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Getting Started</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Documentation Home</a></li>
+                        <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+                        <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>User Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+                        <li class="has-submenu active">
+                            <a href="#" class="active" id="supplier-module-toggle">
+                                <i class="fas fa-truck"></i> Supplier Module
+                            </a>
+                            <ul class="submenu active">
+                                <li><a href="#overview" class="active">Overview</a></li>
+                                <li><a href="#view-suppliers">View Suppliers</a></li>
+                                <li><a href="#create-suppliers">Create Suppliers</a></li>
+                                <li><a href="#edit-suppliers">Edit Suppliers</a></li>
+                                <li><a href="#delete-suppliers">Delete Suppliers</a></li>
+                                <li><a href="#export-suppliers">Export Suppliers</a></li>
+                                <li><a href="#import-suppliers">Import Suppliers</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Inventory Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+                        <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+                        <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+                        <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Order Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+                        <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+                        <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Advanced Features</h3>
+                    <ul class="nav-links">
+                        <li><a href="#"><i class="fas fa-plug"></i> API Integration</a></li>
+                        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Additional Resources</h3>
+                    <ul class="nav-links">
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-exclamation-triangle"></i> Troubleshooting</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Release Notes</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Supplier Module Documentation</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="#">Core Modules</a>
+                    <span class="separator">/</span>
+                    <span>Supplier Module</span>
+                </div>
+            </div>
+            
+            <div class="documentation-card" data-animate>
+                <span id="overview" class="section-anchor"></span>
+                <h2>Supplier Management Overview</h2>
+                <p>This module helps manage suppliers, including their contact details, categories, and assigned materials or services.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Add, edit, view, and delete suppliers</li>
+                    <li>Make Payments for suppliers</li>
+                    <li>Import and export supplier lists</li>
+                    <li>Maintain location and contact info</li>
+                </ul>
+                
+                <span id="view-suppliers" class="section-anchor"></span>
+                <h2>Viewing Suppliers</h2>
+                <p>Steps:</p>
+                <ol>
+                    <li>Go to <strong>Suppliers</strong> tab</li>
+                    <li>List will show all existing suppliers</li>
+                    <li>Use filters or search to narrow down</li>
+                </ol>
+                <img src="screenshots/supplier/1.png" alt="Supplier View" width="800">
+                <br>
+                <br>
+                
+                <span id="create-suppliers" class="section-anchor"></span>
+                <h2>Creating Suppliers</h2>
+                <p>To create a new supplier:</p>
+                <ol>
+                    <li>Click <strong>Create Supplier</strong></li>
+                    <li>Enter:
+                        <ul>
+                            <li>Supplier Name, Shop Name</li>
+                            <li>Email, Contact Number</li>
+                            <li>City & Address</li>
+                        </ul>
+                    </li>
+                    <li>Click <strong>Save</strong></li>
+                </ol>
+                
+                <div class="note">
+                    <strong>Note:</strong> Email and phone number should be unique.
+                </div>
+                
+                <img src="screenshots/supplier/2.png" alt="Create Supplier" width="800">
+                <br>
+                <br>
+                
+                <span id="edit-suppliers" class="section-anchor"></span>
+                <h2>Editing Suppliers</h2>
+                <p>To edit a supplier:</p>
+                <ol>
+                    <li>Select the supplier</li>
+                    <li>Click <strong>Edit</strong></li>
+                    <li>Update necessary fields</li>
+                    <li>Click <strong>Save</strong></li>
+                </ol>
+                
+                <div class="note">
+                    <strong>Note:</strong> Ensure all required fields are filled.
+                </div>
+                
+                <img src="screenshots/supplier/3.png" alt="Edit Supplier" width="800">
+                <br>
+                <br>
+                
+                <span id="delete-suppliers" class="section-anchor"></span>
+                <h2>Deleting Suppliers</h2>
+                <p>To delete a supplier:</p>
+                <ol>
+                    <li>Open the supplier profile</li>
+                    <li>Click <strong>Delete</strong></li>
+                    <li>Confirm in popup</li>
+                </ol>
+                
+                <div class="warning">
+                    <strong>Warning:</strong> Deleted suppliers cannot be restored.
+                </div>
+                
+                <img src="screenshots/supplier/4.png" alt="Delete Supplier" width="800">
+                <br>
+                <br>
+                
+                <span id="export-suppliers" class="section-anchor"></span>
+                <h2>Exporting Suppliers</h2>
+                <p>Steps:</p>
+                <ol>
+                    <li>Go to the supplier list</li>
+                    <li>Click <strong>Export</strong></li>
+                    <li>Download the Excel file</li>
+                </ol>
+                
+                <div class="note">
+                    <strong>Note:</strong> You can export for backups or sharing.
+                </div>
+                
+                <img src="screenshots/supplier/5.png" alt="Export Supplier" width="800">
+                <br>
+                <br>
+                
+                <span id="import-suppliers" class="section-anchor"></span>
+                <h2>Importing Suppliers</h2>
+                <p>To bulk import:</p>
+                <ol>
+                    <li>Click <strong>Import</strong></li>
+                    <li>Upload Excel template</li>
+                    <li>Click <strong>Import</strong> again to confirm</li>
+                </ol>
+                
+                <div class="note">
+                    <strong>Note:</strong> Use provided sample Excel format.
+                </div>
+                
+                <img src="screenshots/supplier/6.png" alt="Import Supplier" width="800">
+                <br>
+                <br>
+            </div>
+            
+            <div class="feedback-section" data-animate>
+                <p>Was this documentation helpful?</p>
+                <div class="feedback-buttons">
+                    <button class="feedback-btn helpful">
+                        <i class="fas fa-thumbs-up"></i> Yes
+                    </button>
+                    <button class="feedback-btn not-helpful">
+                        <i class="fas fa-thumbs-down"></i> No
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

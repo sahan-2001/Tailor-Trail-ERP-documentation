@@ -1,0 +1,258 @@
+/* Full CSS for User Module Documentation */
+
+/* 1. Include base Tailor Trail styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #5d4bff;
+  --primary-light: #7a6bff;
+  --primary-dark: #4a3ac7;
+  --secondary: #00c9a7;
+  --accent: #ff6b6b;
+  --dark: #1a1a2e;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+  --gray-light: #e9ecef;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.documentation-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 280px;
+  background: white;
+  border-right: 1px solid var(--gray-light);
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  padding: var(--space-md);
+}
+
+.sidebar-header h2 {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.search-box {
+  position: relative;
+  margin-top: var(--space-sm);
+}
+
+.search-box input {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm) var(--space-xs) 2.5rem;
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+}
+
+.search-box i {
+  position: absolute;
+  left: var(--space-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray);
+}
+
+.sidebar-nav h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  margin: var(--space-md) 0 var(--space-xs);
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: var(--space-xs);
+  color: var(--dark);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.nav-links a:hover {
+  background: rgba(93, 75, 255, 0.1);
+  color: var(--primary-dark);
+}
+
+.nav-links a.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.nav-links a i {
+  margin-right: var(--space-xs);
+}
+
+.submenu {
+  list-style: none;
+  padding-left: var(--space-sm);
+  display: none;
+}
+
+.submenu.active {
+  display: block;
+}
+
+.main-content {
+  margin-left: 280px;
+  padding: var(--space-lg);
+  flex: 1;
+  background: var(--light);
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.4s;
+}
+
+.content-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.content-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.breadcrumb {
+  font-size: 0.875rem;
+  color: var(--gray);
+}
+
+.breadcrumb .separator {
+  margin: 0 var(--space-xs);
+  color: var(--gray);
+}
+
+.documentation-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--gray-light);
+  transition: all 0.3s ease;
+  margin-bottom: var(--space-lg);
+}
+
+.documentation-card h2 {
+  margin-top: var(--space-lg);
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+}
+
+.documentation-card h3 {
+  font-size: 1.25rem;
+  margin-top: var(--space-md);
+  color: var(--primary);
+}
+
+.documentation-card h4 {
+  font-size: 1.125rem;
+  margin-top: var(--space-md);
+  color: var(--primary);
+}
+
+.note, .warning {
+  padding: var(--space-sm);
+  border-left: 4px solid var(--accent);
+  background: #fff3f3;
+  margin: var(--space-md) 0;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  color: var(--dark);
+}
+
+.warning {
+  border-left-color: #ffc107;
+  background: #fffbe6;
+}
+
+.feedback-section {
+  margin-top: var(--space-xl);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.feedback-buttons {
+  margin-top: var(--space-sm);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.feedback-btn {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--gray-light);
+  font-weight: 500;
+  transition: transform 0.3s;
+}
+
+.feedback-btn:hover {
+  transform: translateY(-2px);
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.feedback-btn i {
+  margin-right: var(--space-xs);
+}
+
+/* Animations */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-animate].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailor Trail ERP Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== CSS Variables ========== */
+        :root {
+            /* Colors - Tailor Trail ERP Color Scheme */
+            --primary: #5d4bff;  /* Vibrant purple-blue */
+            --primary-light: #7a6bff;
+            --primary-dark: #4a3ac7;
+            --secondary: #00c9a7;  /* Teal accent */
+            --accent: #ff6b6b;     /* Coral accent */
+            --dark: #1a1a2e;       /* Deep navy */
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            
+            /* Shadows */
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            
+            /* Transitions */
+            --transition-fast: 0.2s;
+            --transition-normal: 0.3s;
+        }
+        
+        /* ========== Base Styles ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        
+        /* ========== Animation Keyframes ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* ========== Scroll Animation Classes ========== */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        [data-animate].animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Delay animations for sequential items */
+        .quick-link-card:nth-child(1)[data-animate],
+        .update-card:nth-child(1)[data-animate] {
+            transition-delay: 0.1s;
+        }
+        
+        .quick-link-card:nth-child(2)[data-animate],
+        .update-card:nth-child(2)[data-animate] {
+            transition-delay: 0.2s;
+        }
+        
+        .quick-link-card:nth-child(3)[data-animate],
+        .update-card:nth-child(3)[data-animate] {
+            transition-delay: 0.3s;
+        }
+        
+        .quick-link-card:nth-child(4)[data-animate] {
+            transition-delay: 0.4s;
+        }
+        
+        /* ========== Layout Styles ========== */
+        .documentation-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* ========== Enhanced Sidebar Styles ========== */
+        .sidebar {
+            width: 280px;
+            background-color: white;
+            border-right: 1px solid var(--gray-light);
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            padding: var(--space-md) 0;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+        
+        .sidebar.active {
+            transform: translateX(0);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-header {
+            padding: 0 var(--space-md) var(--space-md);
+            border-bottom: 1px solid var(--gray-light);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .sidebar-header h2 i {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar.active .sidebar-header h2 i {
+            transform: rotate(15deg);
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .sidebar-logo img {
+            height: 32px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-logo:hover img {
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        .search-box {
+            margin-top: var(--space-sm);
+            position: relative;
+            width: 100%;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: var(--space-xs) var(--space-sm) var(--space-xs) 2.5rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(93, 75, 255, 0.2);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: var(--space-sm);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:hover i {
+            color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .sidebar-nav {
+            padding: 0 var(--space-sm);
+        }
+        
+        .nav-section {
+            margin-bottom: var(--space-md);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.4s ease;
+        }
+        
+        .sidebar.active .nav-section {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Add delay to each nav section */
+        .sidebar.active .nav-section:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .sidebar.active .nav-section:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .sidebar.active .nav-section:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .sidebar.active .nav-section:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+        
+        .sidebar.active .nav-section:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+        
+        .nav-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray);
+            margin-bottom: var(--space-sm);
+            padding: 0 var(--space-xs);
+            position: relative;
+        }
+        
+        .nav-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 20px;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-section:hover h3::after {
+            width: 40px;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: var(--space-xs);
+            transform-origin: left center;
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar.active .nav-links li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Add delay to each nav link */
+        .sidebar.active .nav-links li:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+        
+        .sidebar.active .nav-links li:nth-child(2) {
+            transition-delay: 0.25s;
+        }
+        
+        .sidebar.active .nav-links li:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .sidebar.active .nav-links li:nth-child(4) {
+            transition-delay: 0.35s;
+        }
+        
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
+            color: var(--dark);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--primary);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-links a:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(93, 75, 255, 0.1);
+            color: var(--primary-dark);
+            padding-left: var(--space-md);
+        }
+        
+        .nav-links a.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(93, 75, 255, 0.2);
+        }
+        
+        .nav-links a.active::before {
+            transform: scaleY(1);
+            background: white;
+        }
+        
+        .nav-links a i {
+            margin-right: var(--space-xs);
+            width: 1.25rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: var(--space-md);
+            left: var(--space-md);
+            z-index: 1100;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            background: var(--primary-dark);
+        }
+        
+        .menu-toggle i {
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* Overlay for mobile */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 900;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ========== Main Content Styles ========== */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: var(--space-lg) var(--space-xl);
+            background-color: var(--light);
+            opacity: 0;
+            transition: margin-left 0.3s ease;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Header */
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .content-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .action-btn {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-light);
+            background: white;
+            color: var(--dark);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: all var(--transition-normal);
+        }
+        
+        .action-btn:hover {
+            background: rgba(93, 75, 255, 0.05);
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .action-btn.primary:hover {
+            background: var(--primary-dark);
+            animation: pulse 1s infinite;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            animation: gradientBG 8s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-illustration {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .hero-illustration img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .version-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            box-shadow: 0 4px 6px rgba(93, 75, 255, 0.15);
+            animation: pulse 2s infinite;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            color: var(--dark);
+            margin-bottom: var(--space-md);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientBG 8s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin-bottom: var(--space-lg);
+            line-height: 1.6;
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md) var(--space-sm) 3rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-light);
+            font-size: 1rem;
+            transition: all var(--transition-normal);
+        }
+        
+        .search-container input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(93, 75, 255, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .search-btn {
+            position: absolute;
+            left: var(--space-sm);
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            color: var(--gray);
+            transition: all 0.3s ease;
+        }
+        
+        .search-container:hover .search-btn {
+            color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: var(--space-lg);
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-item span:first-child {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-item span:last-child {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        /* Quick Links Section */
+        .quick-links-section {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .view-all {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--primary);
+            font-weight: 500;
+            transition: all var(--transition-normal);
+        }
+        
+        .view-all:hover {
+            color: var(--primary-dark);
+            gap: var(--space-sm);
+        }
+        
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .quick-link-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            border: 1px solid var(--gray-light);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary-light);
+        }
+        
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(93, 75, 255, 0.1), rgba(122, 107, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            color: var(--primary);
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-link-card:hover .card-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .quick-link-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+        }
+        
+        .quick-link-card p {
+            font-size: 0.9375rem;
+            color: var(--gray);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+        
+        .card-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--primary);
+            font-weight: 500;
+            transition: all var(--transition-normal);
+        }
+        
+        .card-link:hover {
+            color: var(--primary-dark);
+            gap: var(--space-sm);
+        }
+        
+        .card-progress {
+            margin-top: var(--space-md);
+            font-size: 0.8125rem;
+            color: var(--gray);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            margin-bottom: var(--space-xs);
+            animation: gradientBG 4s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        .card-tag {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            background: rgba(255, 107, 107, 0.1);
+            color: #d63031;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            animation: pulse 2s infinite;
+        }
+        
+        .card-badge {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            background: rgba(0, 201, 167, 0.1);
+            color: var(--secondary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            animation: pulse 2s infinite;
+        }
+        
+        /* Updates Section */
+        .updates-section {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: var(--space-xs);
+            background: rgba(93, 75, 255, 0.05);
+            padding: var(--space-xs);
+            border-radius: var(--radius-md);
+        }
+        
+        .tab-btn {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            background: transparent;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--gray);
+            transition: all var(--transition-normal);
+        }
+        
+        .tab-btn.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            color: var(--primary);
+        }
+        
+        .updates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .update-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            border: 1px solid var(--gray-light);
+            transition: all var(--transition-normal);
+        }
+        
+        .update-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .update-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .update-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .update-badge.new {
+            background: rgba(0, 201, 167, 0.1);
+            color: var(--secondary);
+        }
+        
+        .update-badge.updated {
+            background: rgba(255, 107, 107, 0.1);
+            color: #d63031;
+        }
+        
+        .update-badge.fixed {
+            background: rgba(108, 117, 125, 0.1);
+            color: var(--gray);
+        }
+        
+        .update-date {
+            font-size: 0.8125rem;
+            color: var(--gray);
+        }
+        
+        .update-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+        }
+        
+        .update-card p {
+            font-size: 0.9375rem;
+            color: var(--gray);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+        
+        .update-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .version-tag {
+            font-size: 0.75rem;
+            background: rgba(93, 75, 255, 0.1);
+            color: var(--primary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 2rem;
+            font-weight: 500;
+        }
+        
+        .read-more {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+            gap: var(--space-sm);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            color: white;
+            margin-top: var(--space-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            animation: gradientBG 8s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        .cta-content {
+            flex: 1;
+        }
+        
+        .cta-illustration {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .cta-illustration img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .cta-section p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: var(--space-lg);
+            max-width: 500px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .cta-btn {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: all var(--transition-normal);
+        }
+        
+        .cta-btn.primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .cta-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: pulse 1s infinite;
+        }
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Premium Footer Styles */
+        .premium-footer {
+            background-color: var(--dark);
+            color: white;
+            padding: var(--space-xl) 0 0;
+            margin-top: var(--space-xl);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .footer-logo h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .footer-logo h2 i {
+            color: var(--primary-light);
+        }
+        
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: var(--space-sm);
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-logo:hover img {
+            transform: rotate(-5deg) scale(1.1);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all var(--transition-normal);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: white;
+            position: relative;
+            padding-bottom: var(--space-xs);
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: all var(--transition-normal);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: var(--space-xs);
+        }
+        
+        .footer-links a i {
+            color: var(--primary-light);
+            font-size: 0.875rem;
+        }
+        
+        .footer-newsletter h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: white;
+        }
+        
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--space-md);
+            font-size: 0.9375rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form:hover {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: var(--space-sm);
+            background: transparent;
+            border: none;
+            color: white;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            padding: 0 var(--space-md);
+            background: var(--primary);
+            color: white;
+            transition: all var(--transition-normal);
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--space-md) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+        
+        .copyright {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: var(--space-md);
+        }
+        
+        .footer-legal a {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+            transition: all var(--transition-normal);
+        }
+        
+        .footer-legal a:hover {
+            color: white;
+        }
+        
+        /* ========== Responsive Styles ========== */
+        @media (max-width: 1200px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .cta-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cta-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+                padding: var(--space-md) var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .documentation-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 280px;
+                transform: translateX(-280px);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: var(--space-md);
+            }
+            
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-sm);
+            }
+            
+            .header-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            
+            .hero {
+                padding: var(--space-lg);
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .cta-section {
+                padding: var(--space-lg);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .quick-links-grid,
+            .updates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-sm);
+            }
+            
+            .footer-legal {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="documentation-container">
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay"></div>
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="screenshots/logo.png" height="100px" width="100px" alt="Tailor Trail ERP Logo">
+                </div>
+                <h2>
+                    <i class="fas fa-book-open"></i>
+                    ERP Guide
+                </h2>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search documentation...">
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Getting Started</h3>
+                    <ul class="nav-links">
+                        <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+                        <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>User Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+                        <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+                        <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Inventory Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+                        <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+                        <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+                        <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3>Order Modules</h3>
+                    <ul class="nav-links">
+                        <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+                        <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+                        <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Advanced Features</h3>
+                    <ul class="nav-links">
+                        <li><a href="#"><i class="fas fa-plug"></i> API Integration</a></li>
+                        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Tailor Trail ERP Documentation</h1>
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-bookmark"></i> Bookmarks
+                    </button>
+                    <button class="action-btn primary">
+                        <i class="fas fa-question-circle"></i> Help Center
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="version-badge">
+                        <i class="fas fa-star"></i> Version 3.2.1
+                    </span>
+                    <h1>Welcome to <span class="gradient-text">Tailor Trail ERP</span></h1>
+                    <p class="hero-description">Your comprehensive guide to implementing, configuring, and optimizing our fashion ERP platform. Find everything you need to succeed in apparel management.</p>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search documentation...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span>150+</span>
+                            <span>Articles</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>30+</span>
+                            <span>Video Guides</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>24/7</span>
+                            <span>Support</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <img src="https://illustrations.popsy.co/amber/digital-nomad.svg" alt="Documentation Illustration">
+                </div>
+            </div>
+            
+            <div class="quick-links-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-bolt"></i> Quick Access</h2>
+                    <a href="all-resources.html" class="view-all">View All Resources <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="quick-links-grid">
+                    <div class="quick-link-card" data-animate>
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Getting Started</h3>
+                        <p>New to Tailor Trail ERP? Follow our step-by-step guides to get up and running quickly.</p>
+                        <a href="#" class="card-link">
+                            Explore Guides
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <div class="card-progress">
+                            <div class="progress-bar" style="width: 75%"></div>
+                            <span>75% completed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-link-card" data-animate>
+                        <div class="card-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>Product Management</h3>
+                        <p>Learn how to create, manage, and track apparel products and variants.</p>
+                        <a href="user-module.html" class="card-link">
+                            Explore Module
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <div class="card-tag">
+                            <i class="fas fa-star"></i> Popular
+                        </div>
+                    </div>
+                    
+                    <div class="quick-link-card" data-animate>
+                        <div class="card-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3>API Reference</h3>
+                        <p>Complete documentation for our REST API with integration examples.</p>
+                        <a href="#" class="card-link">
+                            View API Docs
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="quick-link-card" data-animate>
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Security Guide</h3>
+                        <p>Best practices for securing your implementation and configuration.</p>
+                        <a href="#" class="card-link">
+                            Read Guide
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <div class="card-badge">
+                            <i class="fas fa-lock"></i> Essential
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="updates-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-sync-alt"></i> Recent Updates</h2>
+                    <div class="filter-tabs">
+                        <button class="tab-btn active">All</button>
+                        <button class="tab-btn">New Features</button>
+                        <button class="tab-btn">Improvements</button>
+                        <button class="tab-btn">Fixes</button>
+                    </div>
+                </div>
+                
+                <div class="updates-grid">
+                    <div class="update-card" data-animate>
+                        <div class="update-header">
+                            <span class="update-badge new">
+                                <i class="fas fa-plus"></i> New
+                            </span>
+                            <span class="update-date">July 15, 2023</span>
+                        </div>
+                        <h3>Fabric Inventory Module</h3>
+                        <p>The new fabric inventory module now includes advanced tracking for textile materials with custom visualization options.</p>
+                        <div class="update-footer">
+                            <span class="version-tag">v3.2.1</span>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="update-card" data-animate>
+                        <div class="update-header">
+                            <span class="update-badge updated">
+                                <i class="fas fa-sync"></i> Updated
+                            </span>
+                            <span class="update-date">July 10, 2023</span>
+                        </div>
+                        <h3>Order Management Guide</h3>
+                        <p>Added new workflows for custom apparel orders and updated best practices for order processing.</p>
+                        <div class="update-footer">
+                            <span class="version-tag">v3.2.0</span>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="update-card" data-animate>
+                        <div class="update-header">
+                            <span class="update-badge fixed">
+                                <i class="fas fa-wrench"></i> Fixed
+                            </span>
+                            <span class="update-date">July 5, 2023</span>
+                        </div>
+                        <h3>Windows Installation Guide</h3>
+                        <p>Fixed incorrect path examples in the Windows installation guide and added troubleshooting tips.</p>
+                        <div class="update-footer">
+                            <span class="version-tag">v3.1.9</span>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section" data-animate>
+                <div class="cta-content">
+                    <h2>Need more help?</h2>
+                    <p>Our support team is available 24/7 to assist you with any questions or issues.</p>
+                    <div class="cta-buttons">
+                        <button class="cta-btn primary">
+                            <i class="fas fa-headset"></i> Contact Support
+                        </button>
+                        <button class="cta-btn secondary">
+                            <i class="fas fa-comments"></i> Community Forum
+                        </button>
+                    </div>
+                </div>
+                <div class="cta-illustration">
+                    <img src="https://illustrations.popsy.co/amber/ballet-dancer.svg" alt="Support Illustration">
+                </div>
+            </div>
+            
+            <!-- Premium Footer -->
+            <footer class="premium-footer" data-animate>
+                <div class="footer-container">
+                    <div class="footer-grid">
+                        <div class="footer-logo">
+                            <img src="screenshots/logo.png" height="100px" width="100px" alt="Tailor Trail ERP Logo">
+                            <p>Comprehensive ERP solutions for the fashion industry.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="footer-links">
+                            <h3>Resources</h3>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-file-alt"></i> Documentation</a></li>
+                                <li><a href="#"><i class="fas fa-video"></i> Tutorials</a></li>
+                                <li><a href="#"><i class="fas fa-book"></i> API Reference</a></li>
+                                <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-links">
+                            <h3>Company</h3>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-building"></i> About Us</a></li>
+                                <li><a href="#"><i class="fas fa-bullhorn"></i> Press</a></li>
+                                <li><a href="#"><i class="fas fa-briefcase"></i> Careers</a></li>
+                                <li><a href="#"><i class="fas fa-handshake"></i> Partners</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-links">
+                            <h3>Support</h3>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
+                                <li><a href="#"><i class="fas fa-comments"></i> Community</a></li>
+                                <li><a href="#"><i class="fas fa-shield-alt"></i> Security</a></li>
+                                <li><a href="#"><i class="fas fa-file-contract"></i> Legal</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-newsletter">
+                            <h3>Stay Updated</h3>
+                            <p>Subscribe to our newsletter for the latest updates.</p>
+                            <div class="newsletter-form">
+                                <input type="email" placeholder="Your email address">
+                                <button><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-bottom">
+                        <div class="copyright">
+                            &copy; 2023 Tailor Trail ERP. All rights reserved.
+                        </div>
+                        <div class="footer-legal">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                            <a href="#">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced Navigation Menu Scripts
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            
+            // Toggle sidebar on menu button click
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+                
+                // Toggle body overflow when sidebar is open
+                if (sidebar.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Close sidebar when clicking on overlay
+            overlay.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                sidebar.classList.remove('active');
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            // Activate sidebar on larger screens
+            function handleSidebarVisibility() {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.add('active');
+                    overlay.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else {
+                    sidebar.classList.remove('active');
+                }
+            }
+            
+            // Initialize sidebar based on screen size
+            handleSidebarVisibility();
+            
+            // Update on window resize
+            window.addEventListener('resize', handleSidebarVisibility);
+            
+            // Enhanced Nav Link Interactions
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                // Add ripple effect on click
+                link.addEventListener('click', function(e) {
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Close sidebar on mobile after clicking a link
+                    if (window.innerWidth <= 768) {
+                        menuToggle.classList.remove('active');
+                        sidebar.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // Add hover effect
+                link.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateX(5px)';
+                    }
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+            
+            // Previous scroll animations and other scripts
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.bottom >= 0
+                );
+            }
+
+            // Function to handle animation triggers
+            function handleScrollAnimations() {
+                const animatedElements = document.querySelectorAll('[data-animate]');
+                
+                animatedElements.forEach(element => {
+                    if (isInViewport(element)) {
+                        // Remove and re-add animation class to trigger it again
+                        element.classList.remove('animate-in');
+                        void element.offsetWidth; // Trigger reflow
+                        element.classList.add('animate-in');
+                    }
+                });
+            }
+
+            // Initialize all animated elements
+            function initAnimations() {
+                const elementsToAnimate = document.querySelectorAll('.quick-link-card, .update-card, .cta-section, .premium-footer');
+                
+                elementsToAnimate.forEach(el => {
+                    el.setAttribute('data-animate', '');
+                    el.classList.add('animate-in');
+                });
+                
+                // Initial check
+                handleScrollAnimations();
+            }
+
+            // Initialize animations
+            initAnimations();
+            
+            // Check on scroll
+            window.addEventListener('scroll', handleScrollAnimations);
+            
+            // Add hover effects to buttons
+            const buttons = document.querySelectorAll('button, .action-btn, .cta-btn, .tab-btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add click effect to cards
+            const cards = document.querySelectorAll('.quick-link-card, .update-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+                        this.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            this.style.transform = 'translateY(-5px)';
+                        }, 100);
+                    }
+                });
+            });
+            
+            // Tab button functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

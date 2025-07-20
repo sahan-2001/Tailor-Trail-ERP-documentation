@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Item Module</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div class="documentation-container">
+
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-book-open"></i> TechDocs</h2>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search documentation..."/>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Getting Started</h3>
+          <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Documentation Home</a></li>
+            <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>User Modules</h3>
+          <ul class="nav-links">
+            <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+            <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+            <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>Inventory Modules</h3>
+          <ul class="nav-links">
+            <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+            <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+            <li class="has-submenu active">
+              <a href="#" class="active" id="inventory-item-toggle"><i class="fas fa-boxes"></i> Inventory Items</a>
+              <ul class="submenu active">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#view-items">View Items</a></li>
+                <li><a href="#create-item">Create Item</a></li>
+                <li><a href="#edit-item">Edit Item</a></li>
+                <li><a href="#delete-item">Delete Item</a></li>
+                <li><a href="#export-items">Export Items</a></li>
+                <li><a href="#import-items">Import Items</a></li>
+                <li><a href="#item-filters">Item Filters</a></li>
+              </ul>
+            </li>
+            <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>Order Modules</h3>
+          <ul class="nav-links">
+            <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+            <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+            <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-header">
+        <h1>Inventory Item Module</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="separator">/</span>
+          <a href="#">Inventory Modules</a>
+          <span class="separator">/</span>
+          <span>Inventory Items</span>
+        </div>
+      </div>
+
+      <div class="documentation-card" data-animate>
+        <span id="overview" class="section-anchor"></span>
+        <h2>Overview</h2>
+        <p>The Inventory Item module manages all products and materials in your inventory system with comprehensive CRUD operations and bulk data handling capabilities.</p>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li>Automatic item code generation based on category</li>
+          <li>Flexible category management system</li>
+          <li>Multiple unit of measure options (kg, liters, pcs, etc.)</li>
+          <li>Real-time quantity tracking with alert thresholds</li>
+          <li>Role-based access control for all operations</li>
+          <li>Bulk import/export functionality</li>
+          <li>Advanced filtering and searching</li>
+        </ul>
+
+        <span id="view-items" class="section-anchor"></span>
+        <h2>Viewing Inventory Items</h2>
+        <p>To browse and search through your inventory items:</p>
+        <ol>
+          <li>Navigate to <strong>Inventory > Items</strong> from the sidebar</li>
+          <li>The system displays all items in a paginated, sortable table</li>
+          <li>Columns include:
+            <ul>
+              <li><strong>Item Code</strong> - Unique identifier</li>
+              <li><strong>Name</strong> - Product description</li>
+              <li><strong>Category</strong> - Classification group</li>
+              <li><strong>UOM</strong> - Unit of measure</li>
+              <li><strong>Available Quantity</strong> - Current stock level</li>
+            </ul>
+          </li>
+          <li>Use the search bar to find items by name, code, or category</li>
+          <li>Click column headers to sort items (click again to reverse order)</li>
+        </ol>
+
+        <div class="note">
+          <strong>Pro Tip:</strong> Combine search with filters (see <a href="#item-filters">Item Filters</a> section) for powerful inventory analysis.
+        </div>
+
+        <img src="screenshots/inventory-item/1.png" alt="Inventory Items List View" width="800">
+        <br><br>
+
+        <span id="create-item" class="section-anchor"></span>
+        <h2>Creating an Inventory Item</h2>
+        <p>To add a new item to your inventory:</p>
+        <ol>
+          <li>Click <strong>Create Item</strong> from the items list page</li>
+          <li>Complete the form sections:
+
+            <h4>Item Code (Auto-generated)</h4>
+            <ul>
+              <li>System creates code based on category and sequence</li>
+              <li>Format: [CAT]-[0001] (e.g., "ELEC-0042")</li>
+            </ul>
+
+            <h4>Item Details (Required)</h4>
+            <ul>
+              <li><strong>Item Name</strong> - Descriptive product name (e.g., "Stainless Steel Bolt")</li>
+              <li><strong>Category</strong> - Select from dropdown or add new</li>
+              <li><strong>Unit of Measure</strong> - Choose appropriate unit</li>
+            </ul>
+
+            <h4>Inventory Controls (Optional)</h4>
+            <ul>
+              <li><strong>Alert Quantity (MOQ)</strong> - Minimum threshold for restocking alerts</li>
+              <li><strong>Max Order Quantity</strong> - Prevent over-ordering</li>
+              <li><strong>Notes</strong> - Special handling instructions</li>
+            </ul>
+          </li>
+          <li>Click <strong>Save</strong> to create the item</li>
+        </ol>
+
+        <div class="note">
+          <strong>Note:</strong> New categories can be added directly from the category dropdown by typing and pressing Enter.
+        </div>
+
+        <div class="warning">
+          <strong>Important:</strong> The initial available quantity is set to 0. Use inventory adjustments or receipts to add stock.
+        </div>
+
+        <img src="screenshots/inventory-item/2.png" alt="Create Item Form" width="800">
+        <br><br>
+
+        <span id="edit-item" class="section-anchor"></span>
+        <h2>Editing an Inventory Item</h2>
+        <p>To modify existing item details:</p>
+        <ol>
+          <li>Locate the item in the list view</li>
+          <li>Click the <strong>Edit</strong> button (pencil icon)</li>
+          <li>Update any editable fields:
+            <ul>
+              <li><strong>Name</strong> - Can be changed at any time</li>
+              <li><strong>Category</strong> - Changing will regenerate item code</li>
+              <li><strong>UOM</strong> - Only change if no transactions exist</li>
+              <li><strong>Inventory Controls</strong> - Adjust thresholds as needed</li>
+            </ul>
+          </li>
+          <li>Click <strong>Save</strong> to update the item</li>
+        </ol>
+
+        <div class="warning">
+          <strong>Data Integrity:</strong> Changing UOM after transactions exist may cause reporting inconsistencies. The system will warn you if this change is risky.
+        </div>
+
+        <img src="screenshots/inventory-item/3.png" alt="Edit Item Form" width="800">
+        <br><br>
+
+        <span id="delete-item" class="section-anchor"></span>
+        <h2>Deleting an Inventory Item</h2>
+        <p>To remove an item from your inventory:</p>
+        <ol>
+          <li>Locate the item in the list view</li>
+          <li>Click the <strong>Delete</strong> button (trash icon)</li>
+          <li>Confirm deletion in the dialog box</li>
+        </ol>
+
+        <div class="warning">
+          <strong>Safety Check:</strong> The system prevents deletion if:
+          <ul>
+            <li>Available quantity is not zero</li>
+            <li>Item has associated transaction history</li>
+            <li>Item is referenced in pending orders</li>
+          </ul>
+          You must first adjust quantities to zero before deleting.
+        </div>
+
+        <img src="screenshots/inventory-item/4.png" alt="Delete Confirmation Dialog" width="500">
+        <br><br>
+
+        <span id="export-items" class="section-anchor"></span>
+        <h2>Exporting Inventory Items</h2>
+        <p>To export your item data for analysis or backup:</p>
+        <ol>
+          <li>From the items list view, click <strong>Export</strong></li>
+          <li>Select export format:
+            <ul>
+              <li><strong>Excel</strong> (.xlsx) - Recommended for most uses</li>
+              <li><strong>CSV</strong> - For simple data exchange</li>
+              <li><strong>PDF</strong> - For printable reports</li>
+            </ul>
+          </li>
+          <li>Choose columns to include (default: all visible columns)</li>
+          <li>Apply any active filters to export filtered subsets</li>
+          <li>Click <strong>Export</strong> to download the file</li>
+        </ol>
+
+        <div class="note">
+          <strong>Template:</strong> Exported Excel files can serve as templates for imports - just add new rows with your data.
+        </div>
+
+        <img src="screenshots/inventory-item/5.png" alt="Export Options Dialog" width="500">
+        <br><br>
+
+        <span id="import-items" class="section-anchor"></span>
+        <h2>Importing Inventory Items</h2>
+        <p>To bulk import items from a spreadsheet:</p>
+        <ol>
+          <li>Prepare your data file:
+            <ul>
+              <li>Use the exported template or follow the format</li>
+              <li>Required columns: <code>name</code>, <code>category</code>, <code>uom</code></li>
+              <li>Optional columns: <code>moq</code>, <code>max_order_quantity</code>, <code>special_note</code></li>
+            </ul>
+          </li>
+          <li>From the items list, click <strong>Import</strong></li>
+          <li>Upload your prepared file</li>
+          <li>Select import mode:
+            <ul>
+              <li><strong>Create New Only</strong> - Skip existing items</li>
+              <li><strong>Update Existing</strong> - Modify matched items</li>
+              <li><strong>Full Sync</strong> - Create new and update existing</li>
+            </ul>
+          </li>
+          <li>Map spreadsheet columns to database fields</li>
+          <li>Review the preview and click <strong>Import</strong></li>
+        </ol>
+
+        <div class="warning">
+          <strong>Validation:</strong> The system will:
+          <ul>
+            <li>Skip rows with missing required fields</li>
+            <li>Flag duplicate items based on name/category</li>
+            <li>Validate UOM values against allowed options</li>
+          </ul>
+          Always review the import summary report.
+        </div>
+
+        <img src="screenshots/inventory-item/6.png" alt="Import Wizard Steps" width="800">
+        <br><br>
+
+        <span id="item-filters" class="section-anchor"></span>
+        <h2>Advanced Item Filters</h2>
+        <p>Powerful filtering options help you analyze inventory:</p>
+
+        <h3>Basic Filters</h3>
+        <ul>
+          <li><strong>Category</strong> - Filter by one or multiple categories</li>
+          <li><strong>UOM</strong> - Show only specific unit types</li>
+          <li><strong>Status</strong> - Active/Inactive items</li>
+        </ul>
+
+        <h3>Quantity Filters</h3>
+        <ul>
+          <li><strong>Stock Level</strong>:
+            <ul>
+              <li>Below MOQ (needs reorder)</li>
+              <li>Above maximum</li>
+              <li>Custom range</li>
+            </ul>
+          </li>
+          <li><strong>Zero Stock</strong> - Items with no inventory</li>
+        </ul>
+
+        <h3>Advanced Options</h3>
+        <ul>
+          <li><strong>Created Date</strong> - Filter by creation time range</li>
+          <li><strong>Modified Date</strong> - Find recently changed items</li>
+          <li><strong>Created By</strong> - Filter by user who added item</li>
+        </ul>
+
+        <div class="note">
+          <strong>Save Filters:</strong> Frequently used filter combinations can be saved as presets for quick access.
+        </div>
+
+        <img src="screenshots/inventory-item/7.png" alt="Advanced Filter Panel" width="800">
+        <br><br>
+
+        <div class="feedback-section">
+          <p>Was this documentation helpful?</p>
+          <div class="feedback-buttons">
+            <button class="feedback-btn helpful"><i class="fas fa-thumbs-up"></i> Yes</button>
+            <button class="feedback-btn not-helpful"><i class="fas fa-thumbs-down"></i> No</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>

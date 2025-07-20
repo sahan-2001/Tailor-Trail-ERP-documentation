@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stock Overview Module</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div class="documentation-container">
+
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-book-open"></i> TechDocs</h2>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search documentation..."/>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Getting Started</h3>
+          <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Documentation Home</a></li>
+            <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>User Modules</h3>
+          <ul class="nav-links">
+            <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+            <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+            <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>Inventory Modules</h3>
+          <ul class="nav-links">
+            <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+            <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+            <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+            <li class="has-submenu active">
+              <a href="#" class="active" id="stock-toggle"><i class="fas fa-box-open"></i> Stock Overview</a>
+              <ul class="submenu active">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#view-stocks">View Stocks</a></li>
+                <li><a href="#create-stock">Create Stock</a></li>
+                <li><a href="#retrieve-stock">Retrieve Stock</a></li>
+                <li><a href="#return-stock">Return Stock</a></li>
+                <li><a href="#destroy-stock">Destroy Stock</a></li>
+                <li><a href="#export-stocks">Export Stocks</a></li>
+                <li><a href="#import-stocks">Import Stocks</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>Order Modules</h3>
+          <ul class="nav-links">
+            <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+            <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+            <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-header">
+        <h1>Stock Overview Module</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="separator">/</span>
+          <a href="#">Inventory Modules</a>
+          <span class="separator">/</span>
+          <span>Stock Overview</span>
+        </div>
+      </div>
+
+      <div class="documentation-card" data-animate>
+        <span id="overview" class="section-anchor"></span>
+        <h2>Overview</h2>
+        <p>The Stock Overview module provides comprehensive management of inventory stock levels across warehouses and locations, with detailed tracking of all stock movements.</p>
+
+        <h3>Key Features</h3>
+        <table class="feature-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Stock Tracking</strong></td>
+              <td>Real-time visibility of stock quantities by warehouse and location</td>
+            </tr>
+            <tr>
+              <td><strong>Stock Movements</strong></td>
+              <td>Record retrievals, returns, and destructions with audit trails</td>
+            </tr>
+            <tr>
+              <td><strong>Purchase Order Integration</strong></td>
+              <td>Special handling for PO-related stock with return capabilities</td>
+            </tr>
+            <tr>
+              <td><strong>Bulk Operations</strong></td>
+              <td>Import/export stock data for efficient inventory management</td>
+            </tr>
+            <tr>
+              <td><strong>Advanced Filtering</strong></td>
+              <td>Filter by warehouse, location, item code, and more</td>
+            </tr>
+            <tr>
+              <td><strong>Audit Logging</strong></td>
+              <td>Track all changes with user and timestamp information</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <span id="view-stocks" class="section-anchor"></span>
+        <h2>Viewing Stock Records</h2>
+        <p>To browse and search current stock levels:</p>
+        <ol>
+          <li>Navigate to <strong>Inventory &gt; Stock Overview</strong></li>
+          <li>The system displays all active stock records (quantity &gt; 0)</li>
+          <li>Key information shown:
+            <ul>
+              <li><strong>Warehouse</strong> - Storage facility</li>
+              <li><strong>Location</strong> - Specific bin/shelf location</li>
+              <li><strong>Item Code</strong> - Unique item identifier</li>
+              <li><strong>Item Name</strong> - Product description</li>
+              <li><strong>Available Quantity</strong> - Current stock level</li>
+            </ul>
+          </li>
+          <li>Use the search bar to find specific items</li>
+          <li>Click column headers to sort records</li>
+          <li>Apply filters to narrow results (see below)</li>
+        </ol>
+
+        <div class="note">
+          <strong>Tip:</strong> The system only shows stock with positive quantities. Zero-quantity items are automatically hidden.
+        </div>
+
+        <h3>Available Filters</h3>
+        <ul>
+          <li><strong>Item Code</strong> - Filter by full or partial item codes</li>
+          <li><strong>Warehouse</strong> - Show stock from specific warehouses</li>
+          <li><strong>Location</strong> - Filter by picking/shipment locations</li>
+        </ul>
+
+        <img src="screenshots/stock-overview/1.png" alt="Stock Overview List View" width="800">
+        <br><br>
+
+        <span id="create-stock" class="section-anchor"></span>
+        <h2>Creating Stock Records</h2>
+        <p>To add new stock to your inventory:</p>
+        <ol>
+          <li>Click <strong>Create Stock</strong> from the stock overview page</li>
+          <li>Complete the form sections:
+            
+            <h4>User & Timestamps (Auto-filled)</h4>
+            <ul>
+              <li><strong>User ID</strong> - Your account identifier</li>
+              <li><strong>User Email</strong> - Your email address</li>
+              <li><strong>Received Date</strong> - Defaults to current date</li>
+              <li><strong>Updated Date</strong> - Auto-managed by system</li>
+            </ul>
+            
+            <h4>Stock Details (Required)</h4>
+            <ul>
+              <li><strong>Item</strong> - Search and select inventory item</li>
+              <li><strong>Available Quantity</strong> - Auto-populated from item</li>
+              <li><strong>Quantity</strong> - Amount being added (must be ≥1)</li>
+              <li><strong>Cost</strong> - Unit cost for accounting</li>
+              <li><strong>Location</strong> - Select picking location</li>
+            </ul>
+          </li>
+          <li>Click <strong>Save</strong> to create the stock record</li>
+        </ol>
+
+        <div class="warning">
+          <strong>Important:</strong> The quantity you enter will be added to any existing stock of the same item at the selected location.
+        </div>
+
+        <img src="screenshots/stock-overview/2.png" alt="Create Stock Form" width="800">
+        <br><br>
+
+        <span id="retrieve-stock" class="section-anchor"></span>
+        <h2>Retrieving Stock</h2>
+        <p>To remove stock from inventory (for use, transfer, etc.):</p>
+        <ol>
+          <li>Locate the stock record in the overview</li>
+          <li>Click the <strong>Retrieve Stock</strong> action button</li>
+          <li>The form auto-populates with:
+            <ul>
+              <li>Item details (ID, code, name)</li>
+              <li>Location information</li>
+              <li>Current available quantity</li>
+              <li>Current cost (editable if needed)</li>
+            </ul>
+          </li>
+          <li>Enter:
+            <ul>
+              <li><strong>Quantity to Retrieve</strong> (must be ≤ available)</li>
+              <li><strong>Reason</strong> - Mandatory explanation</li>
+            </ul>
+          </li>
+          <li>Click <strong>Submit</strong> to complete the retrieval</li>
+        </ol>
+
+        <div class="note">
+          <strong>Audit Trail:</strong> All retrievals are logged with user, timestamp, and reason for complete traceability.
+        </div>
+
+        <img src="screenshots/stock-overview/3.png" alt="Retrieve Stock Modal" width="600">
+        <br><br>
+
+        <span id="return-stock" class="section-anchor"></span>
+        <h2>Returning Stock (PO Items Only)</h2>
+        <p>To return stock that came from a purchase order:</p>
+        <ol>
+          <li>Locate the PO-related stock record (marked with PO icon)</li>
+          <li>Click the <strong>Return Stock</strong> action button</li>
+          <li>The form includes:
+            <ul>
+              <li>Original PO information</li>
+              <li>Supplier/Customer details</li>
+              <li>Current stock details</li>
+            </ul>
+          </li>
+          <li>Specify:
+            <ul>
+              <li><strong>Quantity to Return</strong> (must be ≤ available)</li>
+              <li><strong>Reason</strong> - Mandatory explanation</li>
+            </ul>
+          </li>
+          <li>Click <strong>Submit</strong> to process the return</li>
+        </ol>
+
+        <div class="warning">
+          <strong>Restriction:</strong> This feature is only available for stock records linked to purchase orders.
+        </div>
+
+        <img src="screenshots/stock-overview/4.png" alt="Return Stock Modal" width="600">
+        <br><br>
+
+        <span id="destroy-stock" class="section-anchor"></span>
+        <h2>Destroying Stock</h2>
+        <p>To permanently remove damaged or expired stock:</p>
+        <ol>
+          <li>Locate the stock record in the overview</li>
+          <li>Click the <strong>Destroy Stock</strong> action button</li>
+          <li>The form auto-populates with current stock details</li>
+          <li>Enter:
+            <ul>
+              <li><strong>Quantity to Destroy</strong> (must be ≤ available)</li>
+              <li><strong>Reason</strong> - Mandatory explanation</li>
+            </ul>
+          </li>
+          <li>Click <strong>Submit</strong> to confirm destruction</li>
+        </ol>
+
+        <div class="danger">
+          <strong>Irreversible Action:</strong> Destroyed stock cannot be recovered. Ensure this is the correct action before proceeding.
+        </div>
+
+        <img src="screenshots/stock-overview/5.png" alt="Destroy Stock Modal" width="600">
+        <br><br>
+
+        <span id="export-stocks" class="section-anchor"></span>
+        <h2>Exporting Stock Data</h2>
+        <p>To export stock records for reporting or backup:</p>
+        <ol>
+          <li>From the stock overview, click <strong>Export</strong></li>
+          <li>Select format:
+            <ul>
+              <li><strong>Excel</strong> - Full data with formatting</li>
+              <li><strong>CSV</strong> - Simple comma-separated values</li>
+              <li><strong>PDF</strong> - Printable report format</li>
+            </ul>
+          </li>
+          <li>Choose columns to include (default: all visible columns)</li>
+          <li>Apply any active filters to export filtered subsets</li>
+          <li>Click <strong>Export</strong> to download the file</li>
+        </ol>
+
+        <div class="note">
+          <strong>Template:</strong> Exported Excel files can serve as templates for imports - just add new rows with your data.
+        </div>
+
+        <img src="screenshots/stock-overview/6.png" alt="Export Options Dialog" width="500">
+        <br><br>
+
+        <span id="import-stocks" class="section-anchor"></span>
+        <h2>Importing Stock Data</h2>
+        <p>To bulk import stock records from a spreadsheet:</p>
+        <ol>
+          <li>Prepare your data file:
+            <ul>
+              <li>Use the exported template or follow required format</li>
+              <li>Required fields: <code>item_id</code>, <code>quantity</code>, <code>location_id</code></li>
+              <li>Recommended fields: <code>cost</code>, <code>received_date</code></li>
+            </ul>
+          </li>
+          <li>From the stock overview, click <strong>Import</strong></li>
+          <li>Upload your prepared file</li>
+          <li>Map spreadsheet columns to database fields</li>
+          <li>Review the preview for validation errors</li>
+          <li>Click <strong>Import</strong> to complete the process</li>
+        </ol>
+
+        <div class="warning">
+          <strong>Validation Rules:</strong>
+          <ul>
+            <li>Items must exist in inventory</li>
+            <li>Locations must be valid picking locations</li>
+            <li>Quantities must be positive numbers</li>
+            <li>Duplicate entries will be skipped</li>
+          </ul>
+        </div>
+
+        <img src="screenshots/stock-overview/7.png" alt="Import Wizard Steps" width="800">
+        <br><br>
+
+        <div class="feedback-section">
+          <p>Was this documentation helpful?</p>
+          <div class="feedback-buttons">
+            <button class="feedback-btn helpful"><i class="fas fa-thumbs-up"></i> Yes</button>
+            <button class="feedback-btn not-helpful"><i class="fas fa-thumbs-down"></i> No</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>

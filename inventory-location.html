@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Location Module Documentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<div class="documentation-container">
+
+  <!-- Mobile Menu Toggle -->
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-book-open"></i> TechDocs</h2>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search documentation..."/>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <h3>Getting Started</h3>
+        <ul class="nav-links">
+          <li><a href="index.html"><i class="fas fa-home"></i> Documentation Home</a></li>
+          <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+          <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>User Modules</h3>
+        <ul class="nav-links">
+          <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+          <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+          <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>Inventory Modules</h3>
+        <ul class="nav-links">
+          <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+          <li class="has-submenu active">
+            <a href="#" class="active" id="inventory-location-toggle">
+              <i class="fas fa-map-marker-alt"></i> Inventory Location
+            </a>
+            <ul class="submenu active">
+              <li><a href="#overview" class="active">Overview</a></li>
+              <li><a href="#view-location">View Location</a></li>
+              <li><a href="#create-location">Create Location</a></li>
+              <li><a href="#edit-location">Edit Location</a></li>
+              <li><a href="#delete-location">Delete Location</a></li>
+              <li><a href="#export-location">Export Location</a></li>
+              <li><a href="#import-location">Import Location</a></li>
+            </ul>
+          </li>
+          <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+          <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>Order Modules</h3>
+        <ul class="nav-links">
+          <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+          <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+          <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Inventory Location Module Documentation</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <a href="#">Inventory Modules</a>
+        <span class="separator">/</span>
+        <span>Inventory Location</span>
+      </div>
+    </div>
+
+    <div class="documentation-card" data-animate>
+      <span id="overview" class="section-anchor"></span>
+      <h2>Overview</h2>
+      <p>The Inventory Location module helps organize storage by defining physical locations within warehouses.</p>
+
+      <h3>Features</h3>
+      <ul>
+        <li>Assign locations to warehouses</li>
+        <li>Track items by location</li>
+        <li>Restrict access by roles</li>
+      </ul>
+
+      <span id="view-location" class="section-anchor"></span>
+      <h2>Viewing Inventory Locations</h2>
+      <ol>
+        <li>Navigate to the <strong>Inventory Locations</strong> page from the sidebar</li>
+        <li>A table will display all existing locations with their details</li>
+        <li>You can search by location name, warehouse, or status</li>
+      </ol>
+      <img src="screenshots/inventory-location/1.png" alt="View Inventory Locations" width="800"><br><br>
+
+      <span id="create-location" class="section-anchor"></span>
+      <h2>Creating a Location</h2>
+      <ol>
+        <li>Go to the <strong>Inventory Locations</strong> page</li>
+        <li>Click <strong>Create Inventory Location</strong></li>
+        <li>Fill in:
+          <ul>
+            <li><strong>Location Name</strong> (e.g., Aisle 1-B)</li>
+            <li><strong>Select Warehouse</strong> from dropdown</li>
+            <li>Optionally, add a <strong>Description</strong></li>
+          </ul>
+        </li>
+        <li>Click <strong>Save</strong> to finish</li>
+      </ol>
+      <img src="screenshots/inventory-location/2.png" alt="Create Location" width="800"/><br><br>
+
+      <span id="edit-location" class="section-anchor"></span>
+      <h2>Editing a Location</h2>
+      <ol>
+        <li>Open the desired location</li>
+        <li>Click <strong>Edit</strong></li>
+        <li>Update the name, warehouse, or description</li>
+        <li>Click <strong>Save</strong> to apply changes</li>
+      </ol>
+      <img src="screenshots/inventory-location/3.png" alt="Edit Location" width="800"/><br><br>
+
+      <span id="delete-location" class="section-anchor"></span>
+      <h2>Deleting a Location</h2>
+      <ol>
+        <li>Click the <strong>Delete</strong> button next to the location</li>
+        <li>Confirm the deletion when prompted</li>
+      </ol>
+      <div class="warning">
+        <strong>Warning:</strong> Deleting a location may affect linked inventory items. Ensure it's no longer in use.
+      </div>
+      <img src="screenshots/inventory-location/4.png" alt="Delete Location" width="800"/><br><br>
+
+      <span id="export-location" class="section-anchor"></span>
+      <h2>Exporting Inventory Locations</h2>
+      <ol>
+        <li>Go to the <strong>Inventory Locations</strong> list page</li>
+        <li>Click the <strong>Export</strong> button at the top right</li>
+        <li>Select your desired format (e.g., <strong>Excel</strong>)</li>
+        <li>Click <strong>Download</strong> to save the file</li>
+      </ol>
+      <div class="note">
+        <strong>Note:</strong> Exported files include warehouse references and location descriptions.
+      </div>
+      <img src="screenshots/inventory-location/5.png" alt="Export Inventory Location" width="800"><br><br>
+
+      <span id="import-location" class="section-anchor"></span>
+      <h2>Importing Inventory Locations</h2>
+      <ol>
+        <li>Navigate to the <strong>Inventory Locations</strong> list</li>
+        <li>Click the <strong>Import</strong> button in the top-right</li>
+        <li>Upload your <strong>Excel</strong> file containing location data</li>
+        <li>Click <strong>Import</strong> to complete the process</li>
+      </ol>
+      <div class="note">
+        <strong>Note:</strong> Ensure the Excel file format matches the import template, including required fields like <strong>Location Name</strong>, <strong>Warehouse</strong>, and <strong>Status</strong>.
+      </div>
+      <img src="screenshots/inventory-location/6.png" alt="Import Inventory Locations" width="800"><br><br>
+
+      <div class="feedback-section" data-animate>
+        <p>Was this documentation helpful?</p>
+        <div class="feedback-buttons">
+          <button class="feedback-btn helpful"><i class="fas fa-thumbs-up"></i> Yes</button>
+          <button class="feedback-btn not-helpful"><i class="fas fa-thumbs-down"></i> No</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

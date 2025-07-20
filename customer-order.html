@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Order Module</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="orders.css" />
+</head>
+
+<body>
+  <div class="documentation-container">
+
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-book-open"></i> TechDocs</h2>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search documentation..." />
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Getting Started</h3>
+          <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Documentation Home</a></li>
+            <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>User Modules</h3>
+          <ul class="nav-links">
+            <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+            <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+            <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>Inventory Modules</h3>
+          <ul class="nav-links">
+            <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+            <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+            <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+            <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <h3>Order Modules</h3>
+          <ul class="nav-links">
+            <li><a href="purchase-order.html"><i class="fas fa-file-invoice-dollar"></i> Purchase Orders</a></li>
+            <li class="has-submenu active">
+              <a href="#" class="active" id="co-toggle"><i class="fas fa-shopping-cart"></i> Customer Orders</a>
+              <ul class="submenu active">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#view-orders">View Orders</a></li>
+                <li><a href="#create-order">Create Order</a></li>
+                <li><a href="#create-from-sample">Create from Sample Order</a></li>
+                <li><a href="#edit-order">Edit Order</a></li>
+                <li><a href="#delete-order">Delete Order</a></li>
+                <li><a href="#handle-order">Handle Order</a></li>
+                <li><a href="#status-workflow">Status Workflow</a></li>
+              </ul>
+            </li>
+            <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-header">
+        <h1>Customer Order Module</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="separator">/</span>
+          <a href="#">Order Modules</a>
+          <span class="separator">/</span>
+          <span>Customer Orders</span>
+        </div>
+      </div>
+
+      <div class="documentation-card">
+        <span id="overview" class="section-anchor"></span>
+        <h2>Overview</h2>
+        <p>The Customer Order module manages all sales orders placed by customers, providing a complete workflow from order creation to delivery.</p>
+
+        <h3>Key Features</h3>
+        <table class="feature-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Customer Management</strong></td>
+              <td>Create orders linked to customer records</td>
+            </tr>
+            <tr>
+              <td><strong>Itemized Orders</strong></td>
+              <td>Add multiple items with variations and pricing</td>
+            </tr>
+            <tr>
+              <td><strong>Status Workflow</strong></td>
+              <td>Track order progress through planned, released, cut, started, completed states</td>
+            </tr>
+            <tr>
+              <td><strong>Order Handling</strong></td>
+              <td>Specialized interface for managing order fulfillment</td>
+            </tr>
+            <tr>
+              <td><strong>Audit Trail</strong></td>
+              <td>Track all changes with user and timestamp information</td>
+            </tr>
+            <tr>
+              <td><strong>PDF Generation</strong></td>
+              <td>Print professional order documents</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <span id="view-orders" class="section-anchor"></span>
+        <h2>Viewing Customer Orders</h2>
+        <p>To browse and search through customer orders:</p>
+        <ol>
+          <li>Navigate to <strong>Orders > Customer Orders</strong></li>
+          <li>The system displays all orders in a sortable table</li>
+          <li>Key columns include:
+            <ul>
+              <li><strong>Order ID</strong> - Unique 5-digit identifier</li>
+              <li><strong>Customer Name</strong> - Linked customer record</li>
+              <li><strong>Order Name</strong> - Descriptive name</li>
+              <li><strong>Wanted Delivery Date</strong> - Requested date</li>
+              <li><strong>Status</strong> - Current workflow state</li>
+              <li><strong>Order Total</strong> - Calculated grand total</li>
+            </ul>
+          </li>
+          <li>Use the search bar to find specific orders</li>
+          <li>Click column headers to sort records</li>
+          <li>Apply filters to narrow results</li>
+        </ol>
+
+        <div class="note">
+          <strong>Tip:</strong> Use the "Handle" action to manage individual orders through their lifecycle.
+        </div>
+
+        <img src="screenshots/customer-orders/1.png" alt="Customer Orders List View" width="800" />
+        <br /><br />
+
+        <h3>Available Filters</h3>
+        <ul>
+          <li><strong>Status</strong> - Filter by order state (planned, released, etc.)</li>
+          <li><strong>Created Date</strong> - Filter by order creation date</li>
+          <li><strong>Wanted Delivery Date</strong> - Filter by requested delivery date</li>
+        </ul>
+
+        <span id="create-order" class="section-anchor"></span>
+        <h2>Creating a Customer Order</h2>
+        <p>To create a new customer order:</p>
+        <ol>
+          <li>Click <strong>Create Customer Order</strong> from the orders list</li>
+          <li>Complete the form fields:
+            
+            <h4>Customer Information</h4>
+            <ul>
+              <li><strong>Customer</strong> - Search and select from existing customers</li>
+              <li>Customer details auto-populate (name, phone, email)</li>
+            </ul>
+            
+            <h4>Order Details</h4>
+            <ul>
+              <li><strong>Order Name</strong> - Descriptive name for the order</li>
+              <li><strong>Wanted Delivery Date</strong> - Requested delivery date</li>
+              <li><strong>Special Notes</strong> - Additional instructions</li>
+            </ul>
+            
+            <h4>Order Items</h4>
+            <ul>
+              <li>Add items using the "Add Order Item" button</li>
+              <li>For each item:
+                <ul>
+                  <li><strong>Item Name</strong> - Product description</li>
+                  <li><strong>Is Variation</strong> - Toggle for items with variations</li>
+                  <li>For non-variation items:
+                    <ul>
+                      <li>Quantity</li>
+                      <li>Price</li>
+                      <li>Total (auto-calculated)</li>
+                    </ul>
+                  </li>
+                  <li>For variation items:
+                    <ul>
+                      <li>Add sub-items with "Add Variation Item"</li>
+                      <li>Each variation has name, quantity, price, and total</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Click <strong>Save</strong> to create the order</li>
+        </ol>
+
+        <div class="warning">
+          <strong>Note:</strong> The grand total is automatically calculated from all items and variations.
+        </div>
+
+        <img src="screenshots/customer-orders/2.png" alt="Create Customer Order Form" width="800" />
+        <br /><br />
+
+        <span id="create-from-sample" class="section-anchor"></span>
+        <h2>Creating from Sample Orders</h2>
+        <p>The system allows you to convert accepted sample orders into full customer orders:</p>
+        <ol>
+          <li>Navigate to <strong>Orders > Customer Orders</strong></li>
+          <li>Click <strong>Create from Sample Order</strong> (special button)</li>
+          <li>Select an accepted sample order from the dropdown:
+            <ul>
+              <li>Only sample orders with "accepted" status are available</li>
+              <li>Each entry shows ID, customer name, and grand total</li>
+            </ul>
+          </li>
+          <li>The system auto-populates:
+            <ul>
+              <li>Customer information (read-only)</li>
+              <li>Original delivery date (read-only)</li>
+              <li>Order items with variations (read-only)</li>
+              <li>Grand total (read-only)</li>
+            </ul>
+          </li>
+          <li>Edit the following fields:
+            <ul>
+              <li><strong>New Delivery Date</strong> - Set the actual delivery date</li>
+              <li><strong>Order Items</strong> - Modify quantities/prices as needed</li>
+            </ul>
+          </li>
+          <li>Click <strong>Create Customer Order</strong> to complete the conversion</li>
+        </ol>
+
+        <div class="note">
+          <strong>Automatic Updates:</strong> When converted, the sample order will be marked as "converted" and linked to the new customer order.
+        </div>
+
+        <img src="screenshots/customer-orders/6.png" alt="Create from Sample Order Interface" width="800" />
+        <br /><br />
+
+        <span id="edit-order" class="section-anchor"></span>
+        <h2>Editing a Customer Order</h2>
+        <p>To modify an existing customer order:</p>
+        <ol>
+          <li>Locate the order in the list view</li>
+          <li>Click the <strong>Edit</strong> button (pencil icon)</li>
+          <li>Make changes to editable fields:
+            <ul>
+              <li><strong>Order Name</strong> - Update descriptive name</li>
+              <li><strong>Wanted Delivery Date</strong> - Change requested date</li>
+              <li><strong>Special Notes</strong> - Modify instructions</li>
+              <li><strong>Order Items</strong> - Adjust quantities, prices, or add/remove items</li>
+            </ul>
+          </li>
+          <li>Click <strong>Save</strong> to update the order</li>
+        </ol>
+
+        <div class="warning">
+          <strong>Restriction:</strong> Orders can only be edited when in "planned" status. Orders in other statuses must be handled through the order handling interface.
+        </div>
+
+        <img src="screenshots/customer-orders/3.png" alt="Edit Customer Order Form" width="800" />
+        <br /><br />
+
+        <span id="delete-order" class="section-anchor"></span>
+        <h2>Deleting a Customer Order</h2>
+        <p>To remove a customer order from the system:</p>
+        <ol>
+          <li>Locate the order in the list view</li>
+          <li>Click the <strong>Delete</strong> button (trash icon)</li>
+          <li>Confirm deletion in the dialog box</li>
+        </ol>
+
+        <div class="danger">
+          <strong>Important:</strong> Orders can only be deleted when in "planned" status. This action cannot be undone and will permanently remove the order record.
+        </div>
+
+        <img src="screenshots/customer-orders/4.png" alt="Delete Confirmation Dialog" width="500" />
+        <br /><br />
+
+        <span id="handle-order" class="section-anchor"></span>
+        <h2>Handling Customer Orders</h2>
+        <p>The order handling interface provides specialized actions for managing orders through their lifecycle:</p>
+        <ol>
+          <li>From the orders list, click the <strong>Handle</strong> action button</li>
+          <li>The handling page shows order details and available actions</li>
+          <li>Available actions depend on current status:
+            <ul>
+              <li><strong>Release Order</strong> (planned → released)</li>
+              <li><strong>Complete Order</strong> (cut/started/released → completed)</li>
+              <li><strong>Mark as Delivered</strong> (completed → delivered)</li>
+              <li><strong>Cancel Order</strong> (planned → cancelled)</li>
+              <li><strong>Pause Order</strong> (material released/cut/started → paused)</li>
+              <li><strong>Resume Order</strong> (paused → cut)</li>
+              <li><strong>Plan Order</strong> (released → planned)</li>
+              <li><strong>Print PDF</strong> (all statuses)</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="note">
+          <strong>Workflow:</strong> Each status change is logged in the audit trail with timestamp and user information.
+        </div>
+
+        <img src="screenshots/customer-orders/5.png" alt="Order Handling Interface" width="800" />
+        <br /><br />
+
+        <span id="status-workflow" class="section-anchor"></span>
+        <h2>Status Workflow</h2>
+        <p>Customer orders progress through a defined workflow with specific allowed transitions:</p>
+
+        <div class="status-workflow">
+          <div class="status-line"></div>
+          <div class="status-step">
+            <div class="status-circle status-planned">1</div>
+            <div class="status-label">Planned</div>
+          </div>
+          <div class="status-step">
+            <div class="status-circle status-released">2</div>
+            <div class="status-label">Released</div>
+          </div>
+          <div class="status-step">
+            <div class="status-circle status-cut">3</div>
+            <div class="status-label">Cut</div>
+          </div>
+          <div class="status-step">
+            <div class="status-circle status-started">4</div>
+            <div class="status-label">Started</div>
+          </div>
+          <div class="status-step">
+            <div class="status-circle status-completed">5</div>
+            <div class="status-label">Completed</div>
+          </div>
+          <div class="status-step">
+            <div class="status-circle status-delivered">6</div>
+            <div class="status-label">Delivered</div>
+          </div>
+          <div class="status-step">
+            <div class="status-circle status-invoiced">7</div>
+            <div class="status-label">Invoiced</div>
+          </div>
+          <div class="status-step">
+            <div class="status-circle status-closed">8</div>
+            <div class="status-label">Closed</div>
+          </div>
+        </div>
+
+        <h3>Status Definitions</h3>
+        <table class="feature-table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Description</th>
+              <th>Allowed Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="status-badge status-planned">Planned</span></td>
+              <td>Order created but not yet processed</td>
+              <td>Edit, Delete, Release</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-released">Released</span></td>
+              <td>Order approved and ready for processing</td>
+              <td>Complete, Pause, Plan Again, Print</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-cut">Cut</span></td>
+              <td>Materials have been prepared</td>
+              <td>Complete, Print</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-started">Started</span></td>
+              <td>Production has begun</td>
+              <td>Complete, Print</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-completed">Completed</span></td>
+              <td>Production finished</td>
+              <td>Mark Delivered, Print</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-delivered">Delivered</span></td>
+              <td>Order delivered to customer</td>
+              <td>Invoice, Print</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-invoiced">Invoiced</span></td>
+              <td>Order invoiced</td>
+              <td>Close, Print</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-closed">Closed</span></td>
+              <td>Order closed and archived</td>
+              <td>View Only</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="feedback-section">
+          <p>Was this documentation helpful?</p>
+          <div class="feedback-buttons">
+            <button class="feedback-btn helpful">
+              <i class="fas fa-thumbs-up"></i> Yes
+            </button>
+            <button class="feedback-btn not-helpful">
+              <i class="fas fa-thumbs-down"></i> No
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

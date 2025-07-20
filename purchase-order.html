@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purchase Order Module Documentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="orders.css"/>
+</head>
+
+<body>
+<div class="documentation-container">
+
+  <!-- Mobile Menu Toggle -->
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-book-open"></i> TechDocs</h2>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search documentation..."/>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <h3>Getting Started</h3>
+        <ul class="nav-links">
+          <li><a href="index.html"><i class="fas fa-home"></i> Documentation Home</a></li>
+          <li><a href="#"><i class="fas fa-download"></i> Installation</a></li>
+          <li><a href="#"><i class="fas fa-cog"></i> Configuration</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>User Modules</h3>
+        <ul class="nav-links">
+          <li><a href="user-module.html"><i class="fas fa-users"></i> User Module</a></li>
+          <li><a href="supplier-module.html"><i class="fas fa-truck"></i> Supplier Module</a></li>
+          <li><a href="customer-module.html"><i class="fas fa-user-tag"></i> Customer Module</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>Inventory Modules</h3>
+        <ul class="nav-links">
+          <li><a href="warehouse.html"><i class="fas fa-warehouse"></i> Warehouse Module</a></li>
+          <li><a href="inventory-location.html"><i class="fas fa-map-marker-alt"></i> Inventory Location</a></li>
+          <li><a href="inventory-item.html"><i class="fas fa-boxes"></i> Inventory Items</a></li>
+          <li><a href="stock-overview.html"><i class="fas fa-box-open"></i> Stock Overview</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <h3>Order Modules</h3>
+        <ul class="nav-links">
+          <li class="has-submenu active">
+            <a href="#" class="active" id="purchase-order-toggle">
+              <i class="fas fa-file-invoice-dollar"></i> Purchase Orders
+            </a>
+            <ul class="submenu active">
+              <li><a href="#overview" class="active">Overview</a></li>
+              <li><a href="#view-orders">View Orders</a></li>
+              <li><a href="#create-order">Create Order</a></li>
+              <li><a href="#edit-order">Edit Order</a></li>
+              <li><a href="#delete-order">Delete Order</a></li>
+              <li><a href="#handle-order">Handle Order</a></li>
+              <li><a href="#status-workflow">Status Workflow</a></li>
+            </ul>
+          </li>
+          <li><a href="customer-order.html"><i class="fas fa-shopping-cart"></i> Customer Orders</a></li>
+          <li><a href="sample-order.html"><i class="fas fa-file-alt"></i> Sample Orders</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Purchase Order Module Documentation</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <a href="#">Order Modules</a>
+        <span class="separator">/</span>
+        <span>Purchase Orders</span>
+      </div>
+    </div>
+
+    <div class="documentation-card" data-animate>
+      <span id="overview" class="section-anchor"></span>
+      <h2>Purchase Order Overview</h2>
+      <p>The Purchase Order Module facilitates procurement management by handling orders with suppliers and customers in a unified workflow.</p>
+
+      <h3>Key Features</h3>
+      <ul>
+        <li>Create, view, edit, delete purchase orders</li>
+        <li>Supports supplier and customer as order providers</li>
+        <li>Add multiple order items with quantity and price</li>
+        <li>Status workflow: planned, released, paused, completed</li>
+        <li>Order handling interface with lifecycle actions</li>
+        <li>Generate PDF invoices and order documents</li>
+      </ul>
+
+      <span id="view-orders" class="section-anchor"></span>
+      <h2>Viewing Purchase Orders</h2>
+      <ol>
+        <li>Navigate to <strong>Order Modules &gt; Purchase Orders</strong></li>
+        <li>All purchase orders display in a sortable, searchable table</li>
+        <li>Columns include: Order ID, Provider Type, Provider ID, Wanted Date, Status</li>
+        <li>Use filters to refine the list by provider type and wanted date</li>
+        <li>Click column headers to sort</li>
+        <li>Click on order rows for more details or actions</li>
+      </ol>
+      <img src="screenshots/purchase-order/1.png" alt="View Purchase Orders" width="800"><br><br>
+
+      <span id="create-order" class="section-anchor"></span>
+      <h2>Creating a Purchase Order</h2>
+      <ol>
+        <li>Click <strong>Create Purchase Order</strong> button</li>
+        <li>Fill in required fields:
+          <ul>
+            <li>Select <strong>Provider Type</strong> (Supplier or Customer)</li>
+            <li>Search and select the <strong>Provider</strong></li>
+            <li>Set <strong>Wanted Delivery Date</strong></li>
+            <li>Optionally add <strong>Special Notes</strong></li>
+          </ul>
+        </li>
+        <li>Under the <strong>Order Items</strong> section, add items:
+          <ul>
+            <li>Select inventory item</li>
+            <li>Specify quantity and price</li>
+            <li>Use "Add Order Item" to include multiple items</li>
+          </ul>
+        </li>
+        <li>Click <strong>Save</strong> to create the order</li>
+      </ol>
+      <div class="note">
+        <strong>Note:</strong> Provider Type and Provider cannot be changed after order creation to ensure consistency.
+      </div>
+      <img src="screenshots/purchase-order/2.png" alt="Create Purchase Order" width="800"><br><br>
+
+      <span id="edit-order" class="section-anchor"></span>
+      <h2>Editing a Purchase Order</h2>
+      <ol>
+        <li>Find the order in the purchase orders list</li>
+        <li>Click the <strong>Edit</strong> icon to open the order form</li>
+        <li>Modify allowed fields such as:
+          <ul>
+            <li>Wanted Delivery Date</li>
+            <li>Special Notes</li>
+            <li>Order Items (add, edit, or remove)</li>
+          </ul>
+        </li>
+        <li>Click <strong>Save</strong> to apply changes</li>
+      </ol>
+      <div class="warning">
+        <strong>Warning:</strong> Only orders in "planned" status can be edited.
+      </div>
+      <img src="screenshots/purchase-order/3.png" alt="Edit Purchase Order" width="800"><br><br>
+
+      <span id="delete-order" class="section-anchor"></span>
+      <h2>Deleting a Purchase Order</h2>
+      <ol>
+        <li>Locate the order in the list</li>
+        <li>Click the <strong>Delete</strong> icon</li>
+        <li>Confirm deletion in the popup dialog</li>
+      </ol>
+      <div class="warning">
+        <strong>Warning:</strong> Only "planned" status orders can be deleted. This action is permanent.
+      </div>
+      <img src="screenshots/purchase-order/4.png" alt="Delete Purchase Order" width="800"><br><br>
+
+      <span id="handle-order" class="section-anchor"></span>
+      <h2>Handling Purchase Orders</h2>
+      <p>The handling interface allows managing the order lifecycle with actions:</p>
+      <ul>
+        <li><strong>Release Order:</strong> Change status from planned to released</li>
+        <li><strong>Plan Again:</strong> Move back to planned from released or paused</li>
+        <li><strong>Pause Order:</strong> Temporarily pause a released order</li>
+        <li><strong>Resume Order:</strong> Resume a paused order</li>
+        <li><strong>Print PDF:</strong> Generate printable order documents</li>
+      </ul>
+      <img src="screenshots/purchase-order/5.png" alt="Handle Purchase Order" width="800"><br><br>
+
+      <span id="status-workflow" class="section-anchor"></span>
+      <h2>Status Workflow</h2>
+      <p>Purchase orders follow this status flow:</p>
+
+      <div class="status-workflow">
+        <div class="status-line"></div>
+        <div class="status-step">
+          <div class="status-circle status-planned">1</div>
+          <div class="status-label">Planned</div>
+        </div>
+        <div class="status-step">
+          <div class="status-circle status-released">2</div>
+          <div class="status-label">Released</div>
+        </div>
+        <div class="status-step">
+          <div class="status-circle status-paused">3</div>
+          <div class="status-label">Paused</div>
+        </div>
+        <div class="status-step">
+          <div class="status-circle status-completed">4</div>
+          <div class="status-label">Completed</div>
+        </div>
+      </div>
+
+      <h3>Status Definitions</h3>
+      <table class="feature-table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Allowed Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="status-badge status-planned">Planned</span></td>
+            <td>Order created, pending processing</td>
+            <td>Edit, Delete, Release</td>
+          </tr>
+          <tr>
+            <td><span class="status-badge status-released">Released</span></td>
+            <td>Order approved and sent to provider</td>
+            <td>Plan Again, Pause, Print</td>
+          </tr>
+          <tr>
+            <td><span class="status-badge status-paused">Paused</span></td>
+            <td>Order temporarily on hold</td>
+            <td>Resume, Plan Again, Print</td>
+          </tr>
+          <tr>
+            <td><span class="status-badge status-completed">Completed</span></td>
+            <td>Order fulfilled and closed</td>
+            <td>Print</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Note:</strong> Orders can be printed as PDF documents at any stage of the workflow.
+      </div>
+
+      <div class="feedback-section" data-animate>
+        <p>Was this documentation helpful?</p>
+        <div class="feedback-buttons">
+          <button class="feedback-btn helpful"><i class="fas fa-thumbs-up"></i> Yes</button>
+          <button class="feedback-btn not-helpful"><i class="fas fa-thumbs-down"></i> No</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
